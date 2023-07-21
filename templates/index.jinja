@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            80s Emporium
+        </div>
+        <nav>
+            <ul class="nav_links">
+                    <li class="nav_links--link"><a href="#addmovie"></a>Got a Movie to add to the 80s emporium?</li>
+                    <li class="nav_links--link"><a href="#contact">Contact</a></li>
+                    <li class="nav_links--link"><input type="text" placeholder="Search.."></li>
+            </ul>
+            <div class="menu">
+                <button type="menu">Menu</button>
+            </div>
+        </nav>
+    </header>
+        <section class="hero">
+            <div class="hero__left">
+                <section class="hero__title"><h1>WHERE <span class="hero__title--span">HEROS</span> TREAD</h1></section>
+                <p class="hero__paragraph">You will find only the greatest of the <span>80s</span> in our catalogue, to rent and buy at reasonable prices. Take a look!</p>
+                <button class="button">Browse</button>
+                <button class="button secondary">Let Fate Decide...</button>
+            </div>
+            <div class="hero__right">
+                <img src="https://super142.files.wordpress.com/2022/05/the-terminator.jpg" alt="Cover for The Terminator(1984)">
+            </div>
+        </section>
+        <div class="catalague">
+            <p class="catalogue__header">
+            Browse our catalogue below... if you think you are worthy!
+            </p>
+                {% for movie in movie_catalogue %}
+                <ul>
+                    <li><b>Name: </b>{{ movie.title }}</li>
+                    <li><b>Director: </b>{{ movie.director }}</li>
+                    <li><b>Genre: </b>{{ movie.genre }}</li>
+                    <li><b>Year of Release:</b>{{ movie.release }}</li>
+                    <li><b>About: </b>{{ movie.description }}</li>
+                    <li><b>Price to Rent: </b>{{ movie.price }}</li>
+                    <li><b>Available to rent:</b><button>Rent me!</button></li>
+                </ul>
+            {% endfor %}
+        </div>
+        </main>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <section class="add-movie-hero">
+        <div class="add-movie-hero__left">
+            <section class="add-movie-hero__title"><h2>ADD YOUR <span>MOVIE</span></h2></section>
+        </div>
+        <div class="add-movie-hero__right">
+            <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2012/12/22/18/1-gremlins-warnerbros.jpg?quality=75&width=990&crop=4%3A3%2Csmart&auto=webp" alt="Gizmo from Gremlins">
+        </div>
+    </section>
+    <form action="/" method="post">
+        <label for="name">What movie is it?</label>
+        <input type="text" name="name" id="name"/>
+        <label for="director">What directed it?</label>
+        <input type="text" name="director" id="director">
+        <label for="genre">What genre(s) is it?</label>
+        <input type="text" name="genre" id="genre"/>
+        <label for="release">What year did it come out?</label>
+        <input name="release" type="number" min="1980" max="1989" step="1" value="1980"/>
+        <textarea name="description" id="description" rows="10" cols="30" placeholder="What's your take?"></textarea>
+        <input class="button" type="submit" value="add your movie!"/>
+    </form>
+</body>
+</html>

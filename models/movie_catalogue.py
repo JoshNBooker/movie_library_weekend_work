@@ -5,3 +5,6 @@ The_Terminator = Movie("The Terminator", "James Cameron", "Sci-Fi Action", 1984,
 Legend = Movie("Legend", "Ridley Scott", "Fantasy", 1985, "Some fantasy film, I've never seen it.", 1.89)
 
 movie_catalogue = [The_Shining, The_Terminator, Legend]
+
+def submit_new_movie(movie):
+    movie_catalogue.append(movie)

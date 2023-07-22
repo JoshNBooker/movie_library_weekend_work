@@ -7,3 +7,5 @@ class Movie:
         self.release = release
         self.description = description
         self.price = price
+        self.available = True
+        

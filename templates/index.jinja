@@ -3,50 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>{{ title }}</title>
 </head>
-<body>
-    <header>
-        <div class="logo">
-            80s Emporium
-        </div>
-        <nav>
-            <ul class="nav_links">
-                    <li class="nav_links--link"><a href="/movies">Got a Movie to add to the 80s emporium?</a></li>
-                    <li class="nav_links--link"><a href="#contact">Contact</a></li>
-                    <li class="nav_links--link"><input type="text" placeholder="Search..."></li>
-            </ul>
-            <div class="menu">
-                <button type="menu">Menu</button>
+<body> 
+        <header class="header">
+            <div class="container">
+                <div class="header__wrapper">
+                    <div class="logo">
+                        <h2>80s Emporium</h2>
+                    </div>
+                    <nav class="nav__wrapper">
+                        <div class="nav_links">
+                                <p class="nav_links--link"><a href="/movies">Got a Movie to add to the 80s emporium?</a></p>
+                                <p class="nav_links--link"><a href="#contact">Contact</a></p>
+                                <p class="search_bar"><input type="text" placeholder="Search..."></p>
+                        </div>
+                        <div class="menu">
+                            <button type="menu">Menu</button>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </nav>
-        <section class="hero">
-            <div class="hero__left">
-                <section class="hero__title"><h1>WHERE <span class="hero__title--span">HEROS</span> TREAD</h1></section>
-                <p class="hero__paragraph">You will find only the greatest of the <span>80s</span> in our catalogue, to rent and buy at reasonable prices. Take a look!</p>
-                <button class="button">Browse</button>
-                <button class="button secondary">Let Fate Decide...</button>
+        </header>
+        <div class="container">
+            <div class="hero__wrapper">
+                <section class="hero">
+                        <div class="hero__left">
+                            <section class="hero__title"><h1>WHERE <span class="hero__title--span">HEROS</span> TREAD</h1></section>
+                            <p class="hero__paragraph">You will find only the greatest of the <span>80s</span> in our catalogue, to rent and buy at reasonable prices. Take a look!</p>
+                            <button class="button" onClick="document.getElementById('catalogue').scrollIntoView();">Browse</button>
+                            <button class="button secondary">Let Fate Decide...</button>
+                        </div>
+                            <img class="hero_image" src="https://super142.files.wordpress.com/2022/05/the-terminator.jpg" alt="Cover for The Terminator(1984)">
+                </section>
             </div>
-            <div class="hero__right">
-                <img src="https://super142.files.wordpress.com/2022/05/the-terminator.jpg" alt="Cover for The Terminator(1984)">
-            </div>
-        </section>
-        <div class="catalague">
-            <p class="catalogue__header">
-            Browse our catalogue below... if you think you are worthy!
-            </p>
-                {% for movie in movie_catalogue %}
-                <ul>
-                    <li><b>Name: </b>{{ movie.title }}</li>
-                    <li><b>Director: </b>{{ movie.director }}</li>
-                    <li><b>Genre: </b>{{ movie.genre }}</li>
-                    <li><b>Year of Release:</b>{{ movie.release }}</li>
-                    <li><b>About: </b>{{ movie.description }}</li>
-                    <li><b>Price to Rent: </b>{{ movie.price }}</li>
-                    <li><b>Available to rent:</b><button>Rent me!</button></li>
-                    <a href="/movies/{{loop.index0}}/delete"><button>Destroy</button></a>
-                </ul>
-                {% endfor %}
+                <div class="catalague">
+                    <p class="catalogue__header" id="catalogue">
+                    Browse our catalogue below... if you think you are worthy!
+                    </p>
+                        <div>
+                            {% for movie in movie_catalogue %}
+                                <ul class="movie__card">
+                                    <li><b>Name: </b>{{ movie.title }}</li>
+                                    <li><b>Director: </b>{{ movie.director }}</li>
+                                    <li><b>Genre: </b>{{ movie.genre }}</li>
+                                    <li><b>Year of Release:</b>{{ movie.release }}</li>
+                                    <li><b>About: </b>{{ movie.description }}</li>
+                                    <li><b>Price to Rent: </b>{{ movie.price }}</li>
+                                    <li>{% if movie.available %}
+                                        <b>Available to rent:</b><a href="/movies/{{loop.index0}}/rent"><button>Rent me!</button></a>
+                                        {% else %}
+                                        <b>Available to rent:</b> Not available
+                                        {% endif %} </li>
+                                    <a href="/movies/{{loop.index0}}/delete"><button>Destroy</button></a>
+                                </ul>
+                            {% endfor %}
+                        </div>
+                </div>
         </div>
         </main>
 </body>

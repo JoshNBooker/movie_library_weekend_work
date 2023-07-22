@@ -8,3 +8,6 @@ movie_catalogue = [The_Shining, The_Terminator, Legend]
 
 def submit_new_movie(movie):
     movie_catalogue.append(movie)
+
+def rent_movie(movie):
+    movie.available = False

@@ -44,6 +44,7 @@
                     <li><b>About: </b>{{ movie.description }}</li>
                     <li><b>Price to Rent: </b>{{ movie.price }}</li>
                     <li><b>Available to rent:</b><button>Rent me!</button></li>
+                    <a href="/movies/{{loop.index0}}/delete"><button>Destroy</button></a>
                 </ul>
                 {% endfor %}
         </div>

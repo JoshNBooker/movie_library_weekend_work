@@ -48,8 +48,8 @@ Then add the following line inside the <HEAD> tag of your `base.html`
 > Remember and test your Book class properties. In the top level folder of the app create a tests folder with a `book_test.py` file. Create a `run_tests.py` file with the following:
 
 ```python
-import unittest
-from tests.book_test import TestBook
+# import unittest
+# from tests.book_test import TestBook
 
 if __name__ == '__main__':
     unittest.main()

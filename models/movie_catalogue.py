@@ -11,3 +11,6 @@ def submit_new_movie(movie):
 
 def rent_movie(movie):
     movie.available = False
+
+def return_movie(movie):
+    movie.available = True

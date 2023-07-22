@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect
-from models.movie_catalogue import Movie, submit_new_movie, movie_catalogue, rent_movie
+from models.movie_catalogue import Movie, submit_new_movie, movie_catalogue, rent_movie, return_movie
 
 movie_blueprint = Blueprint("movie", __name__)
 
@@ -31,4 +31,9 @@ def delete_movie(index):
 @movie_blueprint.route("/movies/<index>/rent", methods=["GET", "POST"])
 def rent_movie_request(index):
     rent_movie(movie_catalogue[int(index)])
+    return redirect("/")
+
+@movie_blueprint.route("/movies/<index>", methods = ["POST"])
+def return_movie_request(index):
+    return_movie(movie_catalogue[int(index)])
     return redirect("/")

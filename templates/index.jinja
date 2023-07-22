@@ -19,9 +19,6 @@
                                 <p class="nav_links--link"><a href="#contact">Contact</a></p>
                                 <p class="search_bar"><input type="text" placeholder="Search..."></p>
                         </div>
-                        <div class="menu">
-                            <button type="menu">Menu</button>
-                        </div>
                     </nav>
                 </div>
             </div>
@@ -52,16 +49,23 @@
                                     <li><b>About: </b>{{ movie.description }}</li>
                                     <li><b>Price to Rent: </b>{{ movie.price }}</li>
                                     <li>{% if movie.available %}
-                                        <b>Available to rent:</b><a href="/movies/{{loop.index0}}/rent"><button>Rent me!</button></a>
+                                        <b>Available to rent: </b><a href="/movies/{{loop.index0}}/rent"><button class="button">Available! Click here to rent me!</button></a>
                                         {% else %}
-                                        <b>Available to rent:</b> Not available
+                                        <b>Available to rent: </b> Not available
+                                        <li>
+                                        <form action="/movies/{{loop.index0}}" method="post">
+                                        <label for="return">Are you returning this?</label>
+                                        <input type="checkbox" name="return" value="yes"></input>
+                                        <input type="submit" class="button" value="return"/>
+                                        </form>
+                                        </li>
                                         {% endif %} </li>
-                                    <a href="/movies/{{loop.index0}}/delete"><button>Destroy</button></a>
+                                    <a href="/movies/{{loop.index0}}/delete"><button class="button">Destroy</button></a>
                                 </ul>
                             {% endfor %}
                         </div>
                 </div>
-        </div>
+            </div>
         </main>
 </body>
 </html>

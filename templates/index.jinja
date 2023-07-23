@@ -6,66 +6,78 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>{{ title }}</title>
 </head>
-<body> 
-        <header class="header">
-            <div class="container">
-                <div class="header__wrapper">
-                    <div class="logo">
-                        <h2>80s Emporium</h2>
-                    </div>
-                    <nav class="nav__wrapper">
-                        <div class="nav_links">
-                                <p class="nav_links--link"><a href="/movies">Got a Movie to add to the 80s emporium?</a></p>
-                                <p class="nav_links--link"><a href="#contact">Contact</a></p>
-                                <p class="search_bar"><input type="text" placeholder="Search..."></p>
+<body>
+    <header class="header">
+        <div class="container">
+                    <div class="header__wrapper">
+                        <div class="logo">
+                            <h2>80s Emporium</h2>
                         </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
+                        <nav class="nav__wrapper">
+                            <div class="nav_links">
+                                    <p class="nav_links--link"><a href="/movies">GOT A MOVIE TO ADD TO THE 80S EMPORIUM?</a></p>
+                                    <p class="nav_links--link"><a href="#contact">Contact</a></p>
+                                    <p class="search_bar"><input type="text" placeholder="BROWSE..."></p>
+                            </div>
+                        </nav>
+                    </div>       
+        </div>
+    </header>
+    <div class="background">
         <div class="container">
             <div class="hero__wrapper">
                 <section class="hero">
                         <div class="hero__left">
                             <section class="hero__title"><h1>WHERE <span class="hero__title--span">HEROS</span> TREAD</h1></section>
-                            <p class="hero__paragraph">You will find only the greatest of the <span>80s</span> in our catalogue, to rent and buy at reasonable prices. Take a look!</p>
-                            <button class="button" onClick="document.getElementById('catalogue').scrollIntoView();">Browse</button>
-                            <button class="button secondary">Let Fate Decide...</button>
+                            <p class="hero__paragraph">You will find only the greatest of the <span class="hero__paragraph--span">80s</span> in our catalogue, to rent and buy at reasonable prices. Take a look!</p>
+                            <button class="button" onClick="document.getElementById('catalogue').scrollIntoView();">BROWSE</button>
+                            <button class="button secondary">LET FATE DECIDE</button>
                         </div>
-                            <img class="hero_image" src="https://super142.files.wordpress.com/2022/05/the-terminator.jpg" alt="Cover for The Terminator(1984)">
+                            <img class="hero_image" src="/static/Hobbies - Hobbies Monochromatic.png" alt="Cover for The Terminator(1984)">
                 </section>
             </div>
                 <div class="catalague">
                     <p class="catalogue__header" id="catalogue">
-                    Browse our catalogue below... if you think you are worthy!
+                    <h3>Browse our catalogue below... if you think you are worthy!</h3>
                     </p>
-                        <div>
-                            {% for movie in movie_catalogue %}
-                                <ul class="movie__card">
-                                    <li><b>Name: </b>{{ movie.title }}</li>
-                                    <li><b>Director: </b>{{ movie.director }}</li>
-                                    <li><b>Genre: </b>{{ movie.genre }}</li>
-                                    <li><b>Year of Release:</b>{{ movie.release }}</li>
-                                    <li><b>About: </b>{{ movie.description }}</li>
-                                    <li><b>Price to Rent: </b>{{ movie.price }}</li>
-                                    <li>{% if movie.available %}
-                                        <b>Available to rent: </b><a href="/movies/{{loop.index0}}/rent"><button class="button">Available! Click here to rent me!</button></a>
-                                        {% else %}
-                                        <b>Available to rent: </b> Not available
-                                        <li>
-                                        <form action="/movies/{{loop.index0}}" method="post">
-                                        <label for="return">Are you returning this?</label>
-                                        <input type="checkbox" name="return" value="yes"></input>
-                                        <input type="submit" class="button" value="return"/>
-                                        </form>
-                                        </li>
-                                        {% endif %} </li>
-                                    <a href="/movies/{{loop.index0}}/delete"><button class="button">Destroy</button></a>
-                                </ul>
-                            {% endfor %}
+                </div>
+                    <hr class="catalogue__divider">
+                    <div>
+                        <div class="catalogue__container">    
+                            <div class="catalogue">
+                                {% for movie in movie_catalogue %}
+                                    <ul class="movie__card">
+                                        <li><b>Name: </b>{{ movie.title }}</li>
+                                        <li><b>Director: </b>{{ movie.director }}</li>
+                                        <li><b>Genre: </b>{{ movie.genre }}</li>
+                                        <li><b>Year of Release:</b>{{ movie.release }}</li>
+                                        <li><b>About: </b>{{ movie.description }}</li>
+                                        <li><b>Price to Rent: </b>{{ movie.price }}</li>
+                                        <li>{% if movie.available %}
+                                            <b>Available to rent: <input type="checkbox" checked><a href="/movies/{{loop.index0}}/rent"><button class="button">Click here to rent me!</button></a>
+                                            {% else %}
+                                            <b>Available to rent: </b> Not available
+                                            <li>
+                                            <form action="/movies/{{loop.index0}}" method="post">
+                                            <label for="return">Are you returning this?</label>
+                                            <input type="checkbox" name="return" value="yes"></input>
+                                            <input type="submit" class="button" value="return"/>
+                                            </form>
+                                            </li>
+                                            {% endif %} </li>
+                                        <li><a href="/movies/{{loop.index0}}"><button class="button">take a closer look</button></a></li>
+                                        <a href="/movies/{{loop.index0}}/delete"><button class="button destroy">DESTROY</button></a>
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                            <div class="catalogue_video">
+                            <iframe width="640" height="480" controls autoplay src="https://www.youtube.com/embed/Z0eflYLkI4A?autoplay=1"></iframe>
+                            </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </main>
+    </div>
 </body>
 </html>

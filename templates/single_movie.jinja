@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>{{ title }}</title>
+</head>
+<body>
+<div class="container individual_movie_container">
+    <div class="catalogue">
+        <h1>{{ requested_movie[0].title }}</h1>
+            <ul class="individual_movie">
+                <li><b>Director: </b>{{ requested_movie[0].director }}</li>
+                <li><b>Genre: </b>{{ requested_movie[0].genre }}</li>
+                <li><b>Year of Release:</b>{{ requested_movie[0].release }}</li>
+                <li><b>About: </b>{{ requested_movie[0].description }}</li>
+                <li><b>Price to Rent: </b>{{ requested_movie[0].price }}</li>
+                <li>{% if requested_movie[0].available %}
+                    <b>Available to rent: <input type="checkbox" checked><a href="/movies/<index>/rent"><button class="button">Click here to rent me!</button></a>
+                    {% else %}
+                    <b>Available to rent: </b> Not available
+                    <li>
+                    <form action="/movies/<index>" method="post">
+                    <label for="return">Are you returning this?</label>
+                    <input type="checkbox" name="return" value="yes"></input>
+                    <input type="submit" class="button" value="return"/>
+                    </form>
+                    </li>
+                    {% endif %} </li>
+            </ul>
+    </div>
+</div>
+</body>
+</html>

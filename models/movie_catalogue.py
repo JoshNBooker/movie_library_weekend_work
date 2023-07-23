@@ -6,6 +6,11 @@ Legend = Movie("Legend", "Ridley Scott", "Fantasy", 1985, "Some fantasy film, I'
 
 movie_catalogue = [The_Shining, The_Terminator, Legend]
 
+def show_movie(movie):
+    requested_movie=[]
+    requested_movie.append(movie)
+    return requested_movie
+
 def submit_new_movie(movie):
     movie_catalogue.append(movie)
 

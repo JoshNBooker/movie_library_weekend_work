@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect
-from models.movie_catalogue import Movie, submit_new_movie, movie_catalogue, rent_movie, return_movie
+from models.movie_catalogue import Movie, submit_new_movie, movie_catalogue, rent_movie, return_movie, show_movie
 
 movie_blueprint = Blueprint("movie", __name__)
 
@@ -37,3 +37,9 @@ def rent_movie_request(index):
 def return_movie_request(index):
     return_movie(movie_catalogue[int(index)])
     return redirect("/")
+
+@movie_blueprint.route("/movies/<index>")
+def single_movie(index):
+    index = movie_catalogue[int(index)]
+    requested_movie = show_movie(index)
+    return render_template ("single_movie.jinja", title=requested_movie[0].title, requested_movie=requested_movie, movie_catalogue=movie_catalogue)

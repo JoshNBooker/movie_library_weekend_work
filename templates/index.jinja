@@ -15,8 +15,8 @@
                         </div>
                         <nav class="nav__wrapper">
                             <div class="nav_links">
-                                    <p class="nav_links--link"><a href="/movies">GOT A MOVIE TO ADD TO THE 80S EMPORIUM?</a></p>
-                                    <p class="nav_links--link"><a href="#contact">Contact</a></p>
+                                    <p class="nav_links--link"><a href="/movies"><span>GOT A MOVIE TO ADD TO THE 80S EMPORIUM?</span></a></p>
+                                    <p class="nav_links--link"><a href="#contact"><span>CONTACT</span></a></p>
                                     <p class="search_bar"><input type="text" placeholder="BROWSE..."></p>
                             </div>
                         </nav>
@@ -31,7 +31,7 @@
                             <section class="hero__title"><h1>WHERE <span class="hero__title--span">HEROS</span> TREAD</h1></section>
                             <p class="hero__paragraph">You will find only the greatest of the <span class="hero__paragraph--span">80s</span> in our catalogue, to rent and buy at reasonable prices. Take a look!</p>
                             <button class="button" onClick="document.getElementById('catalogue').scrollIntoView();">BROWSE</button>
-                            <button class="button secondary">LET FATE DECIDE</button>
+                            <button class="button secondary" onClick="document.getElementById('about__text').scrollIntoView();">ABOUT</button>
                         </div>
                             <img class="hero_image" src="/static/Hobbies - Hobbies Monochromatic.png" alt="Cover for The Terminator(1984)">
                 </section>
@@ -47,12 +47,12 @@
                             <div class="catalogue">
                                 {% for movie in movie_catalogue %}
                                     <ul class="movie__card">
-                                        <li><b>Name: </b>{{ movie.title }}</li>
-                                        <li><b>Director: </b>{{ movie.director }}</li>
-                                        <li><b>Genre: </b>{{ movie.genre }}</li>
-                                        <li><b>Year of Release:</b>{{ movie.release }}</li>
-                                        <li><b>About: </b>{{ movie.description }}</li>
-                                        <li><b>Price to Rent: </b>{{ movie.price }}</li>
+                                        <li><b><span class="movie__card--span">Name: </span></b>{{ movie.title }}</li>
+                                        <li><b><span class="movie__card--span">Director: </span></b>{{ movie.director }}</li>
+                                        <li><b><span class="movie__card--span">Genre: </span></b>{{ movie.genre }}</li>
+                                        <li><b><span class="movie__card--span">Year of Release: </span></b>{{ movie.release }}</li>
+                                        <li><b><span class="movie__card--span">About: </span></b>{{ movie.description }}</li>
+                                        <li><b><span class="movie__card--span">Price to Rent: </span></b>{{ movie.price }}</li>
                                         <li>{% if movie.available %}
                                             <b>Available to rent: <input type="checkbox" checked><a href="/movies/{{loop.index0}}/rent"><button class="button">Click here to rent me!</button></a>
                                             {% else %}
@@ -70,8 +70,9 @@
                                     </ul>
                                 {% endfor %}
                             </div>
-                            <div class="catalogue_video">
-                            <iframe width="640" height="480" controls autoplay src="https://www.youtube.com/embed/Z0eflYLkI4A?autoplay=1"></iframe>
+                            <div class="catalogue__right">
+                                <article class="catalogue__about" about><h3 class="about__title">ABOUT</h3><p class="about__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis consectetur molestiae ullam, natus cumque iure consequuntur enim laboriosam molestias sed distinctio, laudantium aperiam quis. Fugiat ab blanditiis obcaecati aliquid animi!</p></article>
+                                <iframe class="catalogue__video" width="640" height="480" controls autoplay src="https://www.youtube.com/embed/Z0eflYLkI4A?autoplay=1"></iframe>
                             </div>
                         </div>
                     </div>
